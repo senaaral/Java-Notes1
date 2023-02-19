@@ -46,3 +46,55 @@ s x ve y adresini gösterir. örnegin csd binasının old adres. k için de ayn�
 1. eşlesmede s.x ve s.y iiçin 10 ve true değerleri alınır.
 2. eşlesmede k.x ve k.y için ise 20 ve false değerleri alınır.
 . nokta operatörünün işlevi erişimdir. 
+//her new işleminde farklı bir nesne üretilir.
+
+/*--------------------------------------------------------------------------
+----------------------------------------------------------------------
+//bir referansın illa adres tutması gerekmez. aşağıdaki hata nesne oluşturmama hatası değildir. 
+s yerel değişkenine değer atanmadan kullanıldıgı için error oluşur. bu bir initialization hatası
+
+package csd; 
+class App {
+	public static void main(String [] args)
+	{
+		Sample s;
+		
+		s.x = 10;
+
+	}
+}
+
+class Sample {
+	public int x;  
+	public boolean y;
+	}
+/*--------------------------------------------------------------------------
+Farklı türden referanslar birbirlerine explicit olarak  BİLE atanamazlar.
+---------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------------
+non-static veri elemanlarına nesnenin oluşturulması aşamasında default değerler atanır. 
+Aşagıdaki örnekte s.x için 0 değeri s.y için ise false değeri default olarak atanır.
+-------------------------------------------------------------------*/ 
+
+package csd; 
+class App {
+	public static void main(String [] args)
+	{
+		Sample s, k;
+		
+		s = new Sample();
+		k = new Sample(); 
+		
+		System.out.printf("s.x = %d%n", s.x);
+		System.out.printf("s.y = %b%n", s.y);
+		System.out.printf("k.x = %d%n", k.x);
+		System.out.printf("k.y = %b%n", k.y);
+	}
+}
+
+class Sample {
+	public int x;  
+	public boolean y;
+	}
+

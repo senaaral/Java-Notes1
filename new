@@ -1,0 +1,36 @@
+19.02.2023
+
+package csd; 
+class App {
+	public static void main(String [] args)
+	{
+		Sample s, k; //referans bildirimi sample türünden bildirdigime göre s ve knin türü sample
+		
+		s = new Sample(); // s'nin türü sample
+		k = new Sample(); // nesne oluşturur
+		
+		s.x = 20; //int tür s referansının gösterdigi nesnenin
+		s.y = true; //türü boolean
+		k.x = 20;
+		k.y = false;
+		
+		System.out.printf("s.x = %d%n", s.x);
+		System.out.printf("s.y = %b%n", s.y);
+		System.out.printf("k.x = %d%n", k.x);
+		System.out.printf("k.y = %b%n", k.y);
+
+	}
+}
+
+class Sample {
+	public int x;
+	public boolean y; //bunlar non-static veri elemanlarıdır.
+	}
+
+//her sınıf bildirimi bir tür bildirimi.
+//sınıf türünden bir değişkene referans diyoruz
+//s ve k referans new ile nesne oluşturduk.
+// referansın içinde adres var
+//neye göre static veya  non-static: kurallar belirleyecek
+/*-------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------*/

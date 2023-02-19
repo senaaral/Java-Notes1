@@ -5,14 +5,14 @@ class App {
 	public static void main(String [] args)
 	{
 		Sample s, k; //referans bildirimi sample türünden bildirdigime göre s ve knin türü sample
-		
+				// s ve k stack'te oluşturulur.
 		s = new Sample(); // s'nin türü sample
 		k = new Sample(); // nesne oluşturur
 		
-		s.x = 20; //int tür s referansının gösterdigi nesnenin
+		s.x = 20; //s.x'in türü int.s referansının gösterdigi nesnenin
 		s.y = true; //türü boolean
-		k.x = 20;
-		k.y = false;
+		k.x = 20; // türü int
+		k.y = false; //türü boolean
 		
 		System.out.printf("s.x = %d%n", s.x);
 		System.out.printf("s.y = %b%n", s.y);
@@ -23,7 +23,7 @@ class App {
 }
 
 class Sample {
-	public int x;
+	public int x; // x ve y nesnedir.heapte oluşturulur. 
 	public boolean y; //bunlar non-static veri elemanlarıdır.
 	}
 
@@ -34,3 +34,15 @@ class Sample {
 //neye göre static veya  non-static: kurallar belirleyecek
 /*-------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------*/
+// sınıf oldugu için new ile nesne oluşturulabilir.
+stack                          heap  //ramda organize edilir.
+-----                      ---------
+s				x
+k				y
+
+s x ve y adresini gösterir. örnegin csd binasının old adres. k için de aynı durum geçerli
+
+20. satıra geldgiimizde s.x : csd binasının 3. katına çık ve onun içinde bulunan x elemanına 10 değerini ata.
+1. eşlesmede s.x ve s.y iiçin 10 ve true değerleri alınır.
+2. eşlesmede k.x ve k.y için ise 20 ve false değerleri alınır.
+. nokta operatörünün işlevi erişimdir. 

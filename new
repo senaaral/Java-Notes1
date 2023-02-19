@@ -37,8 +37,8 @@ class Sample {
 // sınıf oldugu için new ile nesne oluşturulabilir.
 stack                          heap  //ramda organize edilir.
 -----                      ---------
-s				x
-k				y
+s				x, y
+k				x, y
 
 s x ve y adresini gösterir. örnegin csd binasının old adres. k için de aynı durum geçerli
 
@@ -97,4 +97,137 @@ class Sample {
 	public int x;  
 	public boolean y;
 	}
+	
+/*-----------------------------------------------------------------------------------------------------------------------------
+Bir nesnenin uzunluğu yani bellekte kapladığı alan "en az non-static veeri elemanlarının toplam uzunluğu kadardır.
+Bu durumda aynı türden nesneler için aynı uzunlukta yer ayrılır.Sample turunden nesnenin uzunlugu 4 + boolean türünün uzunluğu kadardır.
+Farklı türden nesneler için farklı veri elemanları olabileceğinden aynı uzunlukta yer ayrılması gerekmez. bir nesnenin uzunluğu
+içindeki veri elemanlarının uzunluğu kadardır. 
+her referansın uzunlugu aynı türü ne olursa olsun. 64 bit sistemde 8 byte  toplam 2^64 tane gözenek var. 
+
+Türü ne olursa olsun referans değişkenlerin uzunlukları aynıdır. Bu da adreslenebilecek sayıları tutabilecek uzunluktur. Örneğin 64 bit 
+sistemlerde referanslar 64 bit yani 8 byte uzunluğundadır. Benzer şekilde 32 bit sistemlerde tüm referanslar 32bit yani (4 byte) 
+uzunlugundadır.
+---------------------------------------------------------------------------------------------------------------------------*/
+package csd; 
+class App {
+	public static void main(String [] args)
+	{
+		Sample s, k;
+		
+		s = new Sample();
+		k = new Sample(); 
+		
+		System.out.printf("s.x = %d%n", s.x);
+		System.out.printf("s.y = %b%n", s.y);
+		System.out.printf("k.x = %d%n", k.x);
+		System.out.printf("k.y = %b%n", k.y);
+	}
+}
+
+class Sample {
+	public int x;  
+	public boolean y;
+	}
+
+class Mample {
+	public float x; 
+	public char y;
+}
+
+
+/*------------------------------------------------------------------------------------------------------------------
+Aynı türden iki referansın birbirine atanması durumunda iki referans da artık aynı nesneyi gösterir duruma gelir. 
+Bu durumda artık hangi referansla nesneye erişildiğinin bir önemi yotur. Aşağıdaki örnekte ** ile belirtilen ifadede s referansı gösterdiği
+nesneden kopartılmış ve k'nın içerisindeki adres atandığından artık k ve s aynı nesneyi 
+gösterir duruma gelmiştir. 
+
+stack                       heap
+-----			----------
+s			   x,y
+k			   x,y                   //s ve k parametre değşkenleri stackte oluşturulur.
+Aşağıdaki örnekte s= k denildiginde s.x = 30 s.y = false değerini üreticektir. c derneğinin postit kagıdını k sye vermis oldu.
+
+package csd; 
+class App {
+	public static void main(String [] args)
+	{
+		Sample s, k;
+		
+		s = new Sample();
+		k = new Sample(); 
+		
+		s.x = 10; 
+		s.y = true;
+		k.x = 30;
+		
+		System.out.printf("s.x = %d%n", s.x);
+		System.out.printf("s.y = %b%n", s.y);
+		System.out.printf("k.x = %d%n", k.x);
+		System.out.printf("k.y = %b%n", k.y);
+		System.out.println("---------------------------");
+		
+		s = k ;  //**
+		
+		System.out.printf("s.x = %d%n", s.x);
+		System.out.printf("s.y = %b%n", s.y);
+		System.out.printf("k.x = %d%n", k.x);
+		System.out.printf("k.y = %b%n", k.y);
+		System.out.println("---------------------------");
+	}
+}
+
+class Sample {
+	public int x;  
+	public boolean y;
+	}
+
+class Mample {
+	public float x; 
+	public char y;
+}
+--------------------------------------------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------------------------------------------------
+Bir sınıf aslında bir takım non-static veri elemanlarından oluşan bileşik bir türdür.Gün ay yıl bir arada oldunugunda tarihi oluşturur.
+Date türü day month yeardan oluşmalıdır. 
+
+/*-----------------------------------------------------------------------------------
+ Bir metodun parametre değişkeni bir referans olabilri.
+ Bu durumda metot aynı türden bir referans ile çağırılabilir.
+ -------------------------------------------------------------------------------------*/
+ package csd; 
+
+class App {
+	public static void main(String [] args)
+	{
+		Time time; //referans tanımı
+		time = new Time(); //nesneyi olusturduk
+		
+		time.hour = 19; //bunlar birer değişken
+		time.minute = 19;
+		time.second = 14;
+		time.millisecond = 234;
+		
+		TimeUtil.printTime(time);
+	}
+}
+
+class TimeUtil {
+	public static void printTime(Time time)
+	{
+		System.out.printf("%02d:%02d:%02d.%03d", time.hour, time.minute, time.second, time.millisecond);
+	}
+}
+
+class Time {
+	public int hour;
+	public int minute;
+	public int second;
+	public int millisecond; // time tek başına bir türdür.hour tek başına bir tür belirtmez
+	//bir kisinin adının olması ogrenci old anlamına gelmez. numarası da olmalıdır.
+	//sınıf ve nesne bunun bilesenleri
+	// time türünden değişkene time türden bir referans argümanına ihtiyaç vardır.
+}
+
 

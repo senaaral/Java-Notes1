@@ -229,5 +229,5 @@ class Time {
 	//sınıf ve nesne bunun bilesenleri
 	// time türünden değişkene time türden bir referans argümanına ihtiyaç vardır.
 }
-
-
+//metod çağırılırken argümanlardan parametrelere aktarım oluyor. metot nesne olusturup referansına dönüyor.
+//iki tane aynı türden bir referans birbirine atanırsa  time hour = hour;

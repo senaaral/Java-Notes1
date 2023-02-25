@@ -231,3 +231,67 @@ class Time {
 }
 //metod çağırılırken argümanlardan parametrelere aktarım oluyor. metot nesne olusturup referansına dönüyor.
 //iki tane aynı türden bir referans birbirine atanırsa  time hour = hour;
+
+/*----------------------------------------------------------------------------------------------------------------------
+	25.02.2023
+-----------------------------------------------------------------------------------------------------------------------*/
+Sınıfın static bir veri elemanı bir  tanedir. Bu elemanın kullanılabilmesi için nesne oluşturulması gerekmez. Veri elemanı 
+sınıf içindeki bildirimlere denir. Sınıfın static bir veri elemanına sınıf dışından sınıf ismi ve nokta öperatörü ile 
+erişilebilir. Sınıfın statik veri elemanları sınıfın bir elemanı ilk kez kullanıldıgında oluşturulur. Statik veri elemanı programın 
+sonuna kadar yaşarlar.Static veri elemanları da heapte olusturulur. Sınıfın static veri elemanlarına da oluşturulduğunda default 
+değer atanır. 
+
+
+/*----------------------------------------------------------------------------------------------------------------------
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		System.out.printf("Sample.x = %d%n", Sample.x);
+		System.out.printf("Sample.y = %b%n", Sample.y);
+		
+		Sample.x = 10;
+		Sample.y = true;
+		
+		System.out.printf("Sample.x = %d%n", Sample.x);
+		System.out.printf("Sample.y = %b%n", Sample.y);
+		
+		
+	}
+}
+
+class Sample {
+	public static int x;
+	public static boolean y;
+}	
+/*----------------------------------------------------------------------------------------------------------------------
+Sınıfın non-statik veri elemanına sınıf dışında sınıf ismi ve nokta ile erişilemez.
+Sınıfın static bir veri elemanına sınıf dışından referans ve nokta operatörü ile erişilebilir. Sınıf ismi ile 
+erişmekten farkı yoktur. Static veri elemanlarına bu şekilde erişim tercih edilmemelidir.
+-----------------------------------------------------------------------------------------------------------------------*/
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		Sample s;
+		
+		s = new Sample();
+		
+		s.x = 10; //gönlümüzün erroru
+		s.y = true;
+		
+		System.out.printf("Sample.x = %d%n", Sample.x);
+		System.out.printf("Sample.y = %b%n", Sample.y);
+		
+		
+	}
+}
+
+class Sample {
+	public static int x;
+	public static boolean y;
+}
+
+

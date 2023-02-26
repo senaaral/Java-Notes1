@@ -294,4 +294,161 @@ class Sample {
 	public static boolean y;
 }
 
+/*----------------------------------------------------------------------------------------------------------------------
+	26.02.2023
+-----------------------------------------------------------------------------------------------------------------------*/
+	
+/*----------------------------------------------------------------------------------------------------------------------
+	Sınıfı kullanan kodlara "müşteri kod(client kod), sınıfın bildirimine ise hizmet veren (server code) denir. Bu anlamda
+	sınıfı yazan programcının o sınıfa ilişkin "domain'i"(senaryo) sınıfa kullanına göre daha iyi bilmesi gerekir.
+	
+	Point sınıf ve test kodu
+-----------------------------------------------------------------------------------------------------------------------*/
+package csd;
 
+class App {
+	public static void main(String [] args)
+	{
+		Point p1, p2; //p1 ve p2 referans
+		
+		p1 = new Point() ;
+		p2 = new Point() ; //nesne olusur 
+		
+		p1.x = 100.4; //p1in gösterdigi nesne diyebiliriz
+		p1.y = -345.89;
+		p1.x = 23.56;
+
+		p1.print();
+		p2.print();
+	}
+}
+
+
+class Point {
+	public double x, y; // x ve y nesne
+	//her nokta için ayrı bir nesne olacagı için yani özgün old için non-static
+	
+	public void print()
+	{
+		System.out.printf("(%.2f, %.2f)", x, y);
+	}
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	point sınıfı test kodu
+-----------------------------------------------------------------------------------------------------------------------*/
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		Point p1, p2; //p1 ve p2 referans
+		
+		p1 = new Point() ;
+		p2 = new Point() ; //nesne olusur 
+		
+		p1.x = 100.4; //p1in gösterdigi nesne diyebiliriz
+		p1.y = -345.89;
+		p1.x = 23.56;
+
+		p1.print();
+		p2.print();
+		p1.offset(100, 20);
+		p2.offset(-30, 10);
+		p1.print();
+		p2.print();
+		p1.offset(20); // aynı olunca üstteki gelecek iki argümana gerek yok
+		p2.offset(-10);
+		p1.print();
+		p2.print();
+	}
+}
+
+
+class Point {
+	public double x, y; // x ve y nesne
+	//her nokta için ayrı bir nesne olacagı için yani özgün old için non-static
+	
+	public void offset(double dxy)
+	{
+		offset(dxy, dxy);
+	}
+	public void offset(double dx, double dy)
+	{
+		x += dx; // o noktanın x ve ysini kullanacak o zmaan non-statik
+		y += dy;
+	}
+	public void print()
+	{
+		System.out.printf("(%.2f, %.2f)", x, y);
+		System.out.println();
+	}
+}
+
+/*----------------------------------------------------------------------------------------------------------------------
+	point sınıfı test kodu iki nokta arasındaki uzaklıgı yazalım
+-----------------------------------------------------------------------------------------------------------------------*/
+package csd;
+
+class App {
+	public static void main(String [] args)
+	{
+		Point p1, p2; //p1 ve p2 referans
+		
+		p1 = new Point() ;
+		p2 = new Point() ; //nesne olusur 
+		
+		p1.x = 100.4; //p1in gösterdigi nesne diyebiliriz
+		p1.y = -345.89;
+		p1.x = 23.56;
+
+		p1.print();
+		p2.print();
+		p1.offset(100, 20);
+		p2.offset(-30, 10);
+		p1.print();
+		p2.print();
+		p1.offset(20); // aynı olunca üstteki gelecek iki argümana gerek yok
+		p2.offset(-10);
+		p1.print();
+		p2.print();
+		
+		System.out.printf("(Distance: %.2f%n)", p1.distance(p2));
+		System.out.printf("(Distance: %.2f%n)", p2.distance(97, 204));
+		System.out.printf("(Distance: %.2f%n)", p2.distance());
+
+	}
+}
+
+
+class Point {
+	public double x, y; // x ve y nesne
+	//her nokta için ayrı bir nesne olacagı için yani özgün old için non-static
+	
+	public double distance()
+	{
+		return distance(0, 0);
+	}
+	public double distance(double a, double b) //non-static
+	{
+		return Math.sqrt(Math.pow(x-a, 2) + Math.pow(y-b, 2));			//ana işi yapanı bu seçtik
+	}
+	public double distance(Point other)
+	{
+		return distance (other.x, other.y);		
+	}
+	public void offset(double dxy)
+	{
+		offset(dxy, dxy);
+	}
+	public void offset(double dx, double dy)
+	{
+		x += dx; // o noktanın x ve ysini kullanacak o zmaan non-statik
+		y += dy;	//asıl işi yapan bu yukardaki bunu çağırıyor
+	}
+	public void print()
+	{
+		System.out.printf("(%.2f, %.2f)", x, y);
+		System.out.println();
+	}
+}

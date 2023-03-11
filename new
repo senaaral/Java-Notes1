@@ -453,6 +453,9 @@ class Point {
 	}
 }
 
+z1.subtract(z2) işleme sokulduğunda Complex class' ı içerisinde en sonunda public static Complex add() metoduna ulaşılıyor ve
+burada adres new operatörü ile oluşturuluyor sonra tekrar ctor'a dönülüyor ve çağırılan metotlardan teker teker geriye doğru 
+return ler üzerinden çağıran metodlara geri dönüş değerleri aktarılıyor değil mi?
 /*----------------------------------------------------------------------------------------------------------------------
 	11.03.2023
 -----------------------------------------------------------------------------------------------------------------------*/

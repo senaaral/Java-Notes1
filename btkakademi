@@ -1,0 +1,9 @@
+TEST OTOMASYON PATİKASI NOTLARI
+--------------------------------------------------------------------------------------------------------------------------------
+2)PLANLAMA
+2.1) TEST OTOMASYON SEVİYELERİ
+1. ÖZELLİK
+
+--------------------------------------------------------------------------------------------------------------------------------
+Locator: Web sayfası içinde Ulaşmaya çalıştığımız kontrollere denir. kontrolleri konumlandırma konumlarına ise locator denir.
+      (CSS Selector, ID, Xpath, Custom Locators, Class, Name, Link Text, Partial Link Text (text kırılgan birşey) ... )
